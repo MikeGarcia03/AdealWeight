@@ -3,16 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C8E6C9">
+    android:background="#AED581">
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="165dp"
+        android:layout_width="175dp"
         android:layout_height="39dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="3dp"
         android:background="#EEEEEE">
 
         <TextView
@@ -23,7 +23,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:text="Mt/Kg"
-            android:textColor="#00C853"
+            android:textColor="#7CB342"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -31,9 +31,9 @@
             android:id="@+id/schMeasure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="63dp" />
+            android:layout_marginStart="68dp" />
 
         <TextView
             android:id="@+id/LbFt"
@@ -43,25 +43,25 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
             android:text="Lb/Ft"
-            android:textColor="#00C853"
+            android:textColor="#7CB342"
             android:textSize="18sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="170dp"
+        android:layout_width="177dp"
         android:layout_height="39dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="3dp"
         android:background="#EEEEEE">
 
         <TextView
             android:id="@+id/Male"
             android:text="Male"
-            android:textColor="#00C853"
+            android:textColor="#7CB342"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_width="wrap_content"
@@ -75,13 +75,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="53dp" />
+            android:layout_centerInParent="true"
+            android:layout_marginStart="56dp" />
 
         <TextView
             android:id="@+id/Female"
             android:text="Female"
-            android:textColor="#00C853"
+            android:textColor="#7CB342"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_width="wrap_content"
@@ -98,15 +98,15 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginStart="3dp"
         android:background="#EEEEEE">
 
         <TextView
         android:id="@+id/age"
         android:text="Age"
-        android:textColor="#00C853"
+        android:textColor="#7CB342"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_width="wrap_content"
@@ -129,7 +129,7 @@
         <TextView
             android:id="@+id/height"
             android:text="Height"
-            android:textColor="#00C853"
+            android:textColor="#7CB342"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_width="wrap_content"
@@ -151,7 +151,7 @@
         <TextView
             android:id="@+id/weight"
             android:text="Weight"
-            android:textColor="#00C853"
+            android:textColor="#7CB342"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_width="wrap_content"
@@ -175,24 +175,124 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fbtnCalculate"
+        android:src="@drawable/calculator"
+        android:tint="#EEEEEE"
         android:layout_width="170dp"
         android:layout_height="95dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="140dp"/>
+        android:layout_marginTop="139dp"/>
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="170dp"
-        android:layout_height="95dp"
+        android:layout_height="160dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="167dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginTop="161dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginStart="3dp"
         android:background="#EEEEEE">
+
+        <TextView
+            android:id="@+id/bodyMassIndex"
+            android:text="Body Mass Index"
+            android:textColor="#7CB342"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/bodyMassIndex2"
+            android:text="Body Mass Index"
+            android:textColor="#9E9E9E"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="35dp"/>
+
+        <TextView
+            android:id="@+id/healthyWeightRange"
+            android:text="Healthy Weight Range"
+            android:textColor="#7CB342"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="70dp"/>
+
+        <TextView
+            android:id="@+id/healthyWeightRange2"
+            android:text="Healthy Weight Range"
+            android:textColor="#9E9E9E"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="95dp"/>
+        <TextView
+            android:id="@+id/theGoal"
+            android:text="The Goal"
+            android:textColor="#7CB342"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="30dp"/>
+
+        <TextView
+            android:id="@+id/theGoal2"
+            android:text="The Goal"
+            android:textColor="#9E9E9E"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="37dp"
+            android:layout_marginTop="95dp"/>
+
     </RelativeLayout>
 
-</RelativeLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fbtnReset"
+        android:src="@drawable/refresh"
+        android:tint="#EEEEEE"
+        android:layout_width="170dp"
+        android:layout_height="95dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="300dp"/>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="170dp"
+        android:layout_height="234dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="323dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginStart="3dp"
+        android:background="#EEEEEE">
+
+    </RelativeLayout>
+
+    </RelativeLayout>
