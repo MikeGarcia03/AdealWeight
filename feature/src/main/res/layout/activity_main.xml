@@ -2,39 +2,25 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#EEEEEE">
 
     <ImageView
         android:id="@+id/imgPresentation"
         android:layout_width="match_parent"
-        android:layout_height="117dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="111dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/main_img" />
-
-    <ImageButton
-        android:id="@+id/btnStart"
-        android:layout_width="141dp"
-        android:layout_height="148dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="149dp"
-        android:background="#ffffff"
-        android:scaleType="centerCrop"
-        android:src="@drawable/btn_img_start" />
-
-    <TextView
-        android:id="@+id/txtStart"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="92dp"
-        android:text="Empezar"
-        android:textColor="#00C853"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="170dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ideal_weight_img"/>
+
+    <ProgressBar
+        android:id="@+id/my_progress_bar_det"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:max="100"
+        android:progress="100" />
 
 </RelativeLayout>
