@@ -1,3 +1,13 @@
 <resources>
     <string name="title_activity_ideal_weight_calculator">Ideal Weight</string>
+    <string name="lMtKg">Kg/Mt</string>
+    <string name="lLbFt">Lb/Ft</string>
+    <string name="lMale">Hombre</string>
+    <string name="lFemale">Mujer</string>
+    <string name="lHeight">Altura Mt</string>
+    <string name="lWrist">Cir. Muñeca Cm</string>
+    <string name="lWeight">Peso</string>
+    <string name="lBodyMassIndex">Body Mass Index</string>
+    <string name="lHealthyWeightRange">Healthy Weight Range</string>
+    <string name="lGoal">Meta</string>
 </resources>

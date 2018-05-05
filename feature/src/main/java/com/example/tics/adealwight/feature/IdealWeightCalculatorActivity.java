@@ -1,72 +1,159 @@
 package com.example.tics.adealwight.feature;
 
+import android.content.pm.ActivityInfo;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 public class IdealWeightCalculatorActivity extends AppCompatActivity {
 
-    private final double FTTOMT = 3.28;
-    private final double LBTOKG = 0.45;
-    private final double KGTOLB = 2.21;
-    private double c_Height, c_Weight, kg_Result, mt_Result, iwKg_Result, iwLb_Result;
-    private FloatingActionButton iw_Calculate, iw_Refresh;
-    private TextView bmi_Result;
-    private EditText weight, height;
-    private Switch sch_Measure;
+    private int mPosition;
+    private double result, iw_Result, c_Height, c_Weight, c_Result;
+    private final double [] RANGE = {18.5, 24.9, 25, 26.9, 27, 29.9, 30, 34.9, 35, 39.9, 40, 49.9};
+    private String message;
+    private String [] gl_Message = {"Good!!! You have to keep healthy", "You have to lose ", "You have to win "};
+    private String [] st_Message = {" Kg","Insufficient Weight", "Normal Weight", "Could have Overweight Level 1",
+            "Overweight Level 1 (Pre-Obesity)", "Obesity Level I (Slight)", "Obesity Level II (Moderate)",
+            "Obesity Level III (Morbid)", "Extreme Obesity"};
+    private DecimalFormat roundDecimals;
+    private FloatingActionButton btn_Calculate, btn_Refresh;
+    private TextView txtV_IndexBodyMass, txtV_State, txtV_Goal;
+    private EditText eTxt_Weight, eTxt_Height;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ideal_weight_calculator);
 
-        iw_Calculate = findViewById(R.id.fbtnCalculate);
-        iw_Refresh = findViewById(R.id.fbtnRefresh);
-        bmi_Result = findViewById(R.id.bodyMassIndex2);
-        weight = findViewById(R.id.weightInput);
-        height = findViewById(R.id.heightInput);
-        sch_Measure = findViewById(R.id.schMeasure);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        getSupportActionBar().setTitle("Ideal Weight: IMC Method");
 
-        iw_Calculate.setOnClickListener(new View.OnClickListener() {
+        roundDecimals = new DecimalFormat("#,####.##");
+        roundDecimals.setRoundingMode(RoundingMode.CEILING);
+
+        btn_Calculate = findViewById(R.id.fbtnCalculate);
+        btn_Refresh = findViewById(R.id.fbtnRefresh);
+        txtV_IndexBodyMass = findViewById(R.id.bodyMassIndex2);
+        txtV_State = findViewById(R.id.actualState2);
+        txtV_Goal = findViewById(R.id.theGoal2);
+        eTxt_Weight = findViewById(R.id.weightInput);
+        eTxt_Height = findViewById(R.id.heightInput);
+
+        btn_Calculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    txtV_State.setText(setStateMessage());
+                    txtV_IndexBodyMass.setText(weightCalculator() + st_Message[0]);
+                    txtV_Goal.setText(setGoalMessage());
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(),"Please, insert your Height and Weight",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btn_Refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                kg_Result = Calculator();
-                if(sch_Measure.isChecked()){
-                    bmi_Result.setText(String.valueOf(kg_Result)+" "+"Lb");
-                }else{
-                    bmi_Result.setText(String.valueOf(kg_Result)+" "+"Kg");
-                }
+                eTxt_Weight.setText("");
+                eTxt_Height.setText("");
+                txtV_State.setText("Actual State");
+                txtV_IndexBodyMass.setText("Body Mass Index");
+                txtV_Goal.setText("The Goal");
             }
         });
     }
 
-    public Double Calculator(){
+    public String weightCalculator(){
 
-        c_Height = Double.parseDouble(height.getText().toString());
-        c_Weight = Double.parseDouble(weight.getText().toString());
+        c_Weight = Double.parseDouble(eTxt_Weight.getText().toString());
+        c_Height = Double.parseDouble(eTxt_Height.getText().toString());
 
-        if (sch_Measure.isChecked()){
+        c_Result = c_Weight / (c_Height * c_Height);
 
-            mt_Result = (c_Height / FTTOMT);
-            kg_Result = (c_Weight / LBTOKG);
+        return roundDecimals.format(c_Result);
+    }
 
-            iwKg_Result = kg_Result/(mt_Result * mt_Result);
-            iwLb_Result = iwKg_Result * KGTOLB;
+    public String setWeightToLoseOrWin(){
 
-            return ((double)Math.round(iwLb_Result));
+        iw_Result = Double.parseDouble(weightCalculator());
 
-        }else{
+        if (!(iw_Result >= RANGE[0] && iw_Result <= RANGE[1])){
 
-            iwKg_Result = c_Weight/(c_Height * c_Height);
+            if (iw_Result > RANGE[1]) {
 
-            return ((double)Math.round(iwKg_Result));
+                result = iw_Result - RANGE[0];
+            }
+            if (iw_Result < RANGE[0]){
+
+                result = RANGE[0] - iw_Result;
+            }
+        }
+        return roundDecimals.format(result);
+    }
+
+    public String setStateMessage(){
+        String test = weightCalculator();
+        iw_Result = Double.parseDouble(test);
+
+        if (iw_Result < RANGE[0]){
+
+            message = st_Message[1];
+            mPosition = 2;
+
+        }else if (iw_Result >= RANGE[0] && iw_Result <= RANGE[1]){
+
+            message = st_Message[2];
+            mPosition = 0;
+
+        }else if (iw_Result >= RANGE[2] && iw_Result <= RANGE[3]){
+
+            message = st_Message[3];
+            mPosition = 1;
+
+        }else if (iw_Result >= RANGE[4] && iw_Result <= RANGE[5]){
+
+            message = st_Message[4];
+            mPosition = 1;
+
+        }else if (iw_Result >= RANGE[6] && iw_Result <= RANGE[7]){
+
+            message = st_Message[5];
+            mPosition = 1;
+
+        }else if (iw_Result >= RANGE[8] && iw_Result <= RANGE[9]){
+
+            message = st_Message[6];
+            mPosition = 1;
+
+        }else if (iw_Result >= RANGE[10] && iw_Result <= RANGE[11]){
+
+            message = st_Message[7];
+            mPosition = 1;
+
+        }else{ message = st_Message[8]; mPosition = 1;}
+
+        return message;
+    }
+
+    public String setGoalMessage(){
+
+        if (mPosition == 0){
+            message = gl_Message[mPosition];
+        }else if (mPosition == 1){
+            message = gl_Message[mPosition] + setWeightToLoseOrWin() + st_Message[0];
+        }else {
+            message = gl_Message[mPosition] + setWeightToLoseOrWin() + st_Message[0];
         }
 
+        return message;
     }
 }

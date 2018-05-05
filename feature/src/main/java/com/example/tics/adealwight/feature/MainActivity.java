@@ -6,9 +6,7 @@ import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.ImageButton;
+
 import android.widget.ProgressBar;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,10 +35,9 @@ public class MainActivity extends AppCompatActivity {
                 super.onAnimationEnd(animation);
                 Intent iwCalculator = new Intent(MainActivity.this, IdealWeightCalculatorActivity.class);
                 startActivity(iwCalculator);
+                MainActivity.this.finish();
             }
         });
         animator.start();
-
-
     }
 }
